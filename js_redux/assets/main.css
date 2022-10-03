@@ -5,13 +5,21 @@ h1 {
 	text-align: center;
 }
 
+.flex {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
 .container {
 	width: 300px;
 	min-height: 100px;
 	padding: 20px;
 	border: 1px solid gray;
 	box-shadow: 0 0 5px #360436;
-	margin: 0 auto;
+	/* margin: 0 auto; */
 	display: flex;
 	flex-direction: column;
 }
@@ -25,7 +33,8 @@ img {
 	width: 100%;
 }
 
-#count {
+#count-phone,
+#count-tab {
 	font-weight: 800;
 	font-size: 30px;
 }

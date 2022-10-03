@@ -1,0 +1,45 @@
+* {
+	transition: all 1s ease-in-out;
+}
+h1 {
+	text-align: center;
+}
+
+.container {
+	width: 300px;
+	min-height: 100px;
+	padding: 20px;
+	border: 1px solid gray;
+	box-shadow: 0 0 5px #360436;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.container p {
+	text-align: center;
+}
+
+img {
+	margin: 0 auto;
+	width: 100%;
+}
+
+#count {
+	font-weight: 800;
+	font-size: 30px;
+}
+
+button {
+	border: 1px solid purple;
+	background-color: purple;
+	padding: 10px;
+	color: #fff;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+button:hover {
+	border: 1px solid #360436;
+	background-color: #360436;
+}

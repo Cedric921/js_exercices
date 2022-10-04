@@ -1,5 +1,6 @@
 const BUY_PHONE = 'BUY_PHONE';
 const BUY_TAB = 'BUY_TAB';
+const BUY_TV = 'BUY_TV';
 
 const buyPhone = () => {
 	// Action
@@ -13,6 +14,12 @@ const buyTab = () => {
 		type: BUY_TAB,
 	};
 };
+const buyTv = () => {
+	// Action
+	return {
+		type: BUY_TV,
+	};
+};
 
 // Reducer
 // _______
@@ -21,6 +28,7 @@ const buyTab = () => {
 const initialState = {
 	phones: 5,
 	tablettes: 10,
+	tv: 2,
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +37,8 @@ const reducer = (state = initialState, action) => {
 			return { ...state, phones: state.phones - 1 };
 		case BUY_TAB:
 			return { ...state, tablettes: state.tablettes - 1 };
+		case BUY_TV:
+			return { ...state, tv: state.tv - 1 };
 
 		default:
 			return state;
@@ -51,6 +61,9 @@ availablePhones.innerHTML = store.getState().phones;
 const availableTablettes = document.querySelector('#count-tab');
 availableTablettes.innerHTML = store.getState().tablettes;
 
+const availableTv = document.querySelector('#count-tv');
+availableTv.innerHTML = store.getState().tv;
+
 //dispacther les actions
 // _____________________
 
@@ -64,10 +77,16 @@ document.querySelector('#buy-tab').addEventListener('click', () => {
 	store.dispatch(buyTab());
 	// store.dispatch({ type: BUY_TAB }); //alternative
 });
+document.querySelector('#buy-tv').addEventListener('click', () => {
+	//permettre de modifier un state via l'action se trouvant dans buyPhone
+	store.dispatch(buyTv());
+	// store.dispatch({ type: BUY_TV }); //alternative
+});
 
 //ecouter si le state a ete modifier et update le dom
 // _________________________________
 store.subscribe(() => {
 	availablePhones.innerHTML = store.getState().phones;
 	availableTablettes.innerHTML = store.getState().tablettes;
+	availableTv.innerHTML = store.getState().tv;
 });

@@ -9,19 +9,20 @@ h1 {
 	display: flex;
 	gap: 10px;
 	justify-content: center;
-	align-items: center;
+	/* align-items: center; */
 	width: 100%;
 }
 
 .container {
 	width: 300px;
 	min-height: 100px;
-	padding: 20px;
+	padding-bottom: 40px;
 	border: 1px solid gray;
 	box-shadow: 0 0 5px #360436;
 	/* margin: 0 auto; */
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 
 .container p {
@@ -34,12 +35,18 @@ img {
 }
 
 #count-phone,
-#count-tab {
+#count-tab,
+#count-tv {
 	font-weight: 800;
 	font-size: 30px;
 }
 
 button {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/* margin: 10px; */
 	border: 1px solid purple;
 	background-color: purple;
 	padding: 10px;
@@ -49,6 +56,6 @@ button {
 }
 
 button:hover {
-	border: 1px solid #360436;
-	background-color: #360436;
+	border: 1px solid #25031d;
+	background-color: #25031d;
 }

@@ -25,21 +25,31 @@ const buyTv = () => {
 // _______
 
 // init states
-const initialState = {
+const initialStatePhone = {
 	phones: 5,
 	tablettes: 10,
-	tv: 2,
 };
 
-const reducer = (state = initialState, action) => {
+const initialStateTv = {
+	tv: 20,
+};
+
+const reducerPhone = (state = initialStatePhone, action) => {
 	switch (action.type) {
 		case BUY_PHONE:
 			return { ...state, phones: state.phones - 1 };
 		case BUY_TAB:
 			return { ...state, tablettes: state.tablettes - 1 };
+
+		default:
+			return state;
+	}
+};
+
+const reducerTv = (state = initialStateTv, action) => {
+	switch (action.type) {
 		case BUY_TV:
 			return { ...state, tv: state.tv - 1 };
-
 		default:
 			return state;
 	}
@@ -53,16 +63,21 @@ const reducer = (state = initialState, action) => {
 //  attacher le store au reducer
 // _____________________________
 
-const store = Redux.createStore(reducer);
+const rootStore = Redux.combineReducers({
+	phones: reducerPhone,
+	tv: reducerTv,
+});
+
+const store = Redux.createStore(rootStore);
 
 const availablePhones = document.querySelector('#count-phone');
-availablePhones.innerHTML = store.getState().phones;
+availablePhones.innerHTML = store.getState().phones.phones;
 
 const availableTablettes = document.querySelector('#count-tab');
-availableTablettes.innerHTML = store.getState().tablettes;
+availableTablettes.innerHTML = store.getState().phones.tablettes;
 
 const availableTv = document.querySelector('#count-tv');
-availableTv.innerHTML = store.getState().tv;
+availableTv.innerHTML = store.getState().tv.tv;
 
 //dispacther les actions
 // _____________________
@@ -86,7 +101,7 @@ document.querySelector('#buy-tv').addEventListener('click', () => {
 //ecouter si le state a ete modifier et update le dom
 // _________________________________
 store.subscribe(() => {
-	availablePhones.innerHTML = store.getState().phones;
-	availableTablettes.innerHTML = store.getState().tablettes;
-	availableTv.innerHTML = store.getState().tv;
+	availablePhones.innerHTML = store.getState().phones.phones;
+	availableTablettes.innerHTML = store.getState().phones.tablettes;
+	availableTv.innerHTML = store.getState().tv.tv;
 });
